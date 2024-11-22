@@ -1,7 +1,4 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 20px;
-}
+
 
 table {
     border-collapse: collapse; 
@@ -22,14 +19,6 @@ td {
 
 tr:nth-child(even) {
     background-color: #f2f2f2;
-}
-
-.container {
-    width: 300px;
-    margin: 0 auto;
-    border: 1px solid #CCCCCC;
-    padding: 30px;
-    border-radius: 10px;
 }
 
 label {

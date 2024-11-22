@@ -9,10 +9,6 @@ $crud = new CRUD;
 $selectId = $crud->selectId('achats', $_GET["id"]);
 if ($selectId) {
     extract($selectId);
-    // $city = $crud->selectId("city", $city_id);
-    // print_r($city);
-    // die();
-    // $cityName = $city['city'];
 } else {
     header('location:order-index.php');
 }
