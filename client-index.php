@@ -1,25 +1,12 @@
 <?php
-
-if (!isset($_GET["id"]) || $_GET["id"] == null) {
-    header('location:order-index.php');
-    exit;
-}
-require_once("classes/CRUD.php");
+require_once('classes/CRUD.php');
 
 $crud = new CRUD;
-$selectId = $crud->selectId('achats', $_GET["id"]);
-if ($selectId) {
-    //   foreach($selectId as $key=>$value){
-    //     $$key = $value;
-    //   }
-    extract($selectId);
-} else {
-    header('location:order-index.php');
-}
+
+$select = $crud->select('clients', 'id', 'ASC');
 
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,15 +57,40 @@ if ($selectId) {
     <div class="container">
 
         <main>
-            <h1>Dernière commande</h1>
-            <p><strong>Numéro de commande : </strong><?= $id; ?></p>
-            <p><strong>Date de la commande: </strong><?= $date_achat; ?></p>
+            <h1>Clients</h1>
 
-            <a href="order-edit.php?id=<?= $id; ?>" class="bouton">Modifier la commande</a>
-            <form action="order-delete.php" method="post">
-                <input type="hidden" name="id" value="<?= $id; ?>">
-                <button type="submit" class="bouton">Supprimer la commande</button>
-            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Clients</th>
+                        <th>Nom</th>
+                        <th>Adresse</th>
+                        <th>Code Postal</th>
+                        <th>Tel</th>
+                        <th>courriel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($select as $row) {
+                    ?>
+                        <tr>
+                            <td><a href="client-show.php?id=<?= $row['id']; ?>"><?= $row['id'] ?></a></td>
+                            <td><?= $row['nom'] ?></td>
+                            <td><?= $row['adresse'] ?></td>
+                            <td><?= $row['code_postal'] ?></td>
+                            <td><?= $row['tel'] ?></td>
+                            <td><?= $row['courriel'] ?></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <p></p>
+            <!-- <a href="order-create.php" class="bouton">Nouvelle commande</a> -->
+            <a href="order-edit.php?id=<?= $row['id']; ?>" class="bouton">Modifier le dernière commande</a>
+            <!-- <a href="client-edit.php?id=<?= $row['id_client']; ?>" class="bouton">Modifier le dernier client</a> -->
 
         </main>
 

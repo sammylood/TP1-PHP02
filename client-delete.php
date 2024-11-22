@@ -1,27 +1,25 @@
-<?php
-if($_SERVER['REQUEST_METHOD'] != "POST"){
-    header('location:client-index.php');
-}
 
+<?php
+if ($_SERVER['REQUEST_METHOD'] != "POST") {
+    header('location:order-index.php');
+}
+require_once("classes/CRUD.php");
 
 foreach ($_POST as $key => $value) {
-    $$key = $value; 
+    $$key = $value;
 }
-
-print_r($_POST);
-$sql="DELETE FROM client WHERE id = ?"; //efface seulement la ligne qui correspond au ID
-
-
-
-
-
-
-$stmt = $pdo->prepare($sql);
-if ($stmt->execute(array($id))){
-    header("location:client-index.php");
+echo $key. ":";
+echo $value;
+$crud = new CRUD;
+// delete($table, $value, $field = "id")
+$deleteId = $crud->delete('clients', 'POST' , "POST");
+if ($selectId) {
+    extract($selectId);
+    $city = $crud->selectId("city", $city_id);
+    // print_r($city);
+    // die();
+    $cityName = $city['city'];
 } else {
-    print_r($stmt->errorInfo());
+    header('location:client-index.php');
 }
-
-
 ?>

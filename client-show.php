@@ -1,20 +1,20 @@
 <?php
 
 if (!isset($_GET["id"]) || $_GET["id"] == null) {
-    header('location:order-index.php');
+    header('location:client-index.php');
     exit;
 }
 require_once("classes/CRUD.php");
 
 $crud = new CRUD;
-$selectId = $crud->selectId('achats', $_GET["id"]);
+$selectId = $crud->selectId('clients', $_GET["id"]);
 if ($selectId) {
     //   foreach($selectId as $key=>$value){
     //     $$key = $value;
     //   }
     extract($selectId);
 } else {
-    header('location:order-index.php');
+    header('location:client-index.php');
 }
 
 
@@ -70,14 +70,18 @@ if ($selectId) {
     <div class="container">
 
         <main>
-            <h1>Dernière commande</h1>
-            <p><strong>Numéro de commande : </strong><?= $id; ?></p>
-            <p><strong>Date de la commande: </strong><?= $date_achat; ?></p>
+            <h1>Dernièr client</h1>
+            <p><strong>ID client : </strong><?= $id; ?></p>
+            <p><strong>Nom: </strong><?= $nom; ?></p>
+            <p><strong>Adresse: </strong><?= $adresse; ?></p>
+            <p><strong>Code postal: </strong><?= $code_postal; ?></p>
+            <p><strong>Tel: </strong><?= $tel; ?></p>
+            <p><strong>Courriel: </strong><?= $courriel; ?></p>
 
-            <a href="order-edit.php?id=<?= $id; ?>" class="bouton">Modifier la commande</a>
-            <form action="order-delete.php" method="post">
+            <a href="client-edit.php?id=<?= $id; ?>" class="bouton">Modifier le client</a>
+            <form action="client-delete.php" method="post">
                 <input type="hidden" name="id" value="<?= $id; ?>">
-                <button type="submit" class="bouton">Supprimer la commande</button>
+                <button type="submit" class="bouton">Supprimer le client</button>
             </form>
 
         </main>

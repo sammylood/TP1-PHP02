@@ -3,7 +3,7 @@ require_once('classes/CRUD.php');
 
 $crud = new CRUD;
 
-$select = $crud->select('achats', 'date_achat', 'DESC');
+$select = $crud->select('achats', 'id', 'ASC');
 
 
 ?>
@@ -29,16 +29,16 @@ $select = $crud->select('achats', 'date_achat', 'DESC');
             <a href="index.php" class="logo" role="menuitem"><img src="https://www.mitsubishi-motors.ca/content/dam/mitsubishi-motors/images/logos/nav-logo-black.svg" alt="logo"></a>
             <div class="liens-nav">
                 <a href="index.php" role="menuitem">Accueil</a>
-                <a href="pages/a-propos.html" role="menuitem">À propos</a>
+                <a href="index.php" role="menuitem">À propos</a>
                 <div class="dropdown">
                     <bouton class="dropbtn">Nos véhicules ▾</bouton>
                     <div class="dropdown-content">
-                        <a href="#" role="menuitem">Vehicules </a>
-                        <a href="#" role="menuitem">Offres spéciales</a>
-                        <a href="#" role="menuitem">Vehicules d'occasion</a>
+                        <a href="index.php" role="menuitem">Vehicules </a>
+                        <a href="index.php" role="menuitem">Offres spéciales</a>
+                        <a href="index.php" role="menuitem">Vehicules d'occasion</a>
                     </div>
                 </div>
-                <a href="#" role="menuitem">Contact</a>
+                <a href="index.php" role="menuitem">Contact</a>
             </div>
             <div class="search-user">
                 <a href="#" class="search"><i class="fa fa-search"></i></a>
@@ -84,6 +84,8 @@ $select = $crud->select('achats', 'date_achat', 'DESC');
             </table>
             <p></p>
             <a href="order-create.php" class="bouton">Nouvelle commande</a>
+            <a href="order-edit.php?id=<?= $row['id']; ?>" class="bouton">Modifier la dernière commande</a>
+            <!-- <a href="client-edit.php?id=<?= $row['id_client']; ?>" class="bouton">Modifier le dernier client</a> -->
 
         </main>
 

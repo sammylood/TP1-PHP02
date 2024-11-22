@@ -66,15 +66,15 @@ class CRUD extends PDO
         }
     }
 
-    // public function delete($table, $value, $field = "id")
-    // {
-    //     $sql = "DELETE FROM $table WHERE $field = :$field";
-    //     $stmt = $this->prepare($sql);
-    //     $stmt->bindValue("$field", $value);
-    //     if ($stmt->execute()) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
+    public function delete($table, $value, $field = "id")
+    {
+        $sql = "DELETE FROM $table WHERE $field = :$field";
+        $stmt = $this->prepare($sql);
+        $stmt->bindValue("$field", $value);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
