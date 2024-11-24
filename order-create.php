@@ -43,8 +43,8 @@ $selectSuccursale = $crud->select('succursales', 'nom', 'ASC');
                 <a href="index.php" role="menuitem">Contact</a>
             </div>
             <div class="search-user">
-                <a href="#" class="search"><i class="fa fa-search"></i></a>
-                <a href="#" class="user"><i class="fa fa-user"></i></a>
+                <a href="order-index.php" class="search"><i class="fa fa-search"></i></a>
+                <a href="client-index.php" class="user"><i class="fa fa-user"></i></a>
             </div>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
         </div>

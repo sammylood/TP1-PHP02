@@ -6,6 +6,7 @@ $crud = new CRUD;
 $select = $crud->select('clients', 'id', 'ASC');
 
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,8 +42,8 @@ $select = $crud->select('clients', 'id', 'ASC');
                 <a href="index.php" role="menuitem">Contact</a>
             </div>
             <div class="search-user">
-                <a href="#" class="search"><i class="fa fa-search"></i></a>
-                <a href="#" class="user"><i class="fa fa-user"></i></a>
+                <a href="order-index.php" class="search"><i class="fa fa-search"></i></a>
+                <a href="client-index.php" class="user"><i class="fa fa-user"></i></a>
             </div>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
@@ -68,6 +69,7 @@ $select = $crud->select('clients', 'id', 'ASC');
                         <th>Code Postal</th>
                         <th>Tel</th>
                         <th>courriel</th>
+                        <th>Suppr.</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,6 +83,12 @@ $select = $crud->select('clients', 'id', 'ASC');
                             <td><?= $row['code_postal'] ?></td>
                             <td><?= $row['tel'] ?></td>
                             <td><?= $row['courriel'] ?></td>
+                            <td>
+                                <form action="client-delete.php" method="post">
+                                    <input type="hidden" name="id" value="<?= $row['id']; ?>">
+                                    <button type="submit" class="bouton">X</button>
+                                </form>
+                            </td>
                         </tr>
                     <?php
                     }
@@ -89,8 +97,7 @@ $select = $crud->select('clients', 'id', 'ASC');
             </table>
             <p></p>
             <!-- <a href="order-create.php" class="bouton">Nouvelle commande</a> -->
-            <a href="order-edit.php?id=<?= $row['id']; ?>" class="bouton">Modifier le dernière commande</a>
-            <!-- <a href="client-edit.php?id=<?= $row['id_client']; ?>" class="bouton">Modifier le dernier client</a> -->
+            <a href="client-edit.php?id=<?= $row['id']; ?>" class="bouton">Modifier le dernier client</a>
 
         </main>
 

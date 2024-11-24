@@ -91,8 +91,8 @@ $order_id = $crud->selectId("achats", $id["id"], "id");
                 <a href="index.php" role="menuitem">Contact</a>
             </div>
             <div class="search-user">
-                <a href="#" class="search"><i class="fa fa-search"></i></a>
-                <a href="#" class="user"><i class="fa fa-user"></i></a>
+                <a href="order-index.php" class="search"><i class="fa fa-search"></i></a>
+                <a href="client-index.php" class="user"><i class="fa fa-user"></i></a>
             </div>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
@@ -112,19 +112,19 @@ $order_id = $crud->selectId("achats", $id["id"], "id");
 
 
             <label>Nom
-                <input type="text" name="nom">
+                <input type="text" name="nom" placeholder="<?= $nom; ?>">
             </label>
             <label>Adresse
-                <input type="text" name="adresse">
+                <input type="text" name="adresse" placeholder="<?= $adresse; ?>">
             </label>
             <label>Telephone
-                <input type="number" name="tel">
+                <input type="number" name="tel" placeholder="<?= $tel; ?>">
             </label>
             <label>Code postal
-                <input type="text" name="code_postal">
+                <input type="text" name="code_postal" placeholder="<?= $code_postal; ?>">
             </label>
             <label>Courriel
-                <input type="text" name="courriel">
+                <input type="text" name="courriel" placeholder="<?= $courriel; ?>">
             </label>
 
             <input type="submit" class="bouton" value="Modifier le client">

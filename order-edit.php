@@ -53,7 +53,24 @@ $selectVoiture = $crud->select('voitures', 'modele', 'ASC');
 $selectClient = $crud->select('clients', 'nom', 'ASC');
 $selectSuccursale = $crud->select('succursales', 'nom', 'ASC');
 
-$order_id = $crud->selectId("achats", $id["id"], "id");
+// $order_id = $crud->selectId("achats", $id["id"], "id");
+
+$selectId = $crud->selectId('achats', $id);
+if ($selectId) {
+    //   foreach($selectId as $key=>$value){
+    //     $$key = $value;
+    //   }
+    extract($selectId);
+}
+
+
+// $defautSuccursale = $crud->selectId('succursales', $id);
+// if ($defautSuccursale) {
+//     //   foreach($selectId as $key=>$value){
+//     //     $$key = $value;
+//     //   }
+//     extract($defautSuccursale);
+// }
 
 ?>
 
@@ -91,8 +108,8 @@ $order_id = $crud->selectId("achats", $id["id"], "id");
                 <a href="index.php" role="menuitem">Contact</a>
             </div>
             <div class="search-user">
-                <a href="#" class="search"><i class="fa fa-search"></i></a>
-                <a href="#" class="user"><i class="fa fa-user"></i></a>
+                <a href="order-index.php" class="search"><i class="fa fa-search"></i></a>
+                <a href="client-index.php" class="user"><i class="fa fa-user"></i></a>
             </div>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
@@ -104,10 +121,9 @@ $order_id = $crud->selectId("achats", $id["id"], "id");
         </section>
     </header>
 
-
     <div class="container">
         <h2>Modifier la commande n°: <?= $id ?></h2>
-        <?= $order_id["$id"] ?>
+
         <form action="order-update.php" method="post">
 
             <input type="hidden" name="id" value="<?= $id; ?>">
@@ -116,7 +132,12 @@ $order_id = $crud->selectId("achats", $id["id"], "id");
                 <?php
                 foreach ($selectVoiture as $rowVoiture) {
                 ?>
-                    <option value="<?= $rowVoiture['id_voiture']; ?>"><?= $rowVoiture['modele']; ?></option>
+                    <option value="<?= $rowVoiture['id_voiture']; ?>"
+                        <?php
+                        if ($rowVoiture['id_voiture'] == $id_voiture) {
+                            echo "selected";
+                        }
+                        ?>><?= $rowVoiture['modele']; ?></option>
                 <?php
                 }
                 ?>
@@ -126,7 +147,12 @@ $order_id = $crud->selectId("achats", $id["id"], "id");
                 <?php
                 foreach ($selectSuccursale as $rowSuccursale) {
                 ?>
-                    <option value="<?= $rowSuccursale['id_succursale']; ?>"><?= $rowSuccursale['nom']; ?></option>
+                    <option value="<?= $rowSuccursale['id_succursale']; ?>"
+                        <?php
+                        if ($rowSuccursale['id_succursale'] == $id_succursale) {
+                            echo "selected";
+                        }
+                        ?>><?= $rowSuccursale['nom'];  ?></option>
                 <?php
                 }
                 ?>

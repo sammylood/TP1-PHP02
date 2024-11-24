@@ -46,13 +46,13 @@ foreach ($post as $key => $value) {
 require_once('db/connex.php');
 $id =  $_POST;
 
-print_r($id); //array ([id]=>57)
-echo $id["id"]; //57
+// print_r($id); //array ([id]=>57)
+// echo $id["id"]; //57
 
 
 $crud = new CRUD;
 
+$update = $crud->update("achats", $id, "id");
 
-$update = $crud->update("achats", $achat, "id");
-print_r($update);
+
 header('location:order-index.php');

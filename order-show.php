@@ -17,7 +17,8 @@ if ($selectId) {
     header('location:order-index.php');
 }
 
-
+$selectVoitures = $crud->select('voitures', 'id_voiture', 'ASC');
+$selectSuccursales = $crud->select('succursales', 'id_succursale', 'ASC');
 ?>
 
 <!DOCTYPE html>
@@ -54,8 +55,8 @@ if ($selectId) {
                 <a href="index.php" role="menuitem">Contact</a>
             </div>
             <div class="search-user">
-                <a href="#" class="search"><i class="fa fa-search"></i></a>
-                <a href="#" class="user"><i class="fa fa-user"></i></a>
+                <a href="order-index.php" class="search"><i class="fa fa-search"></i></a>
+                <a href="client-index.php" class="user"><i class="fa fa-user"></i></a>
             </div>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
@@ -73,8 +74,9 @@ if ($selectId) {
             <h1>Dernière commande</h1>
             <p><strong>Numéro de commande : </strong><?= $id; ?></p>
             <p><strong>Date de la commande: </strong><?= $date_achat; ?></p>
-
-            <a href="order-edit.php?id=<?= $id; ?>" class="bouton">Modifier la commande</a>
+         
+                </p>
+                <a href="order-edit.php?id=<?= $id; ?>" class="bouton">Modifier la commande</a>
             <form action="order-delete.php" method="post">
                 <input type="hidden" name="id" value="<?= $id; ?>">
                 <button type="submit" class="bouton">Supprimer la commande</button>

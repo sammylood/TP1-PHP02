@@ -3,10 +3,15 @@ require_once('classes/CRUD.php');
 
 $crud = new CRUD;
 
-$select = $crud->select('achats', 'id', 'ASC');
 
+$select = $crud->select('achats', 'id', 'ASC');
+$selectVoitures = $crud->select('voitures', 'id_voiture', 'ASC');
+$selectSuccursales = $crud->select('succursales', 'id_succursale', 'ASC');
+
+                                    
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,8 +46,8 @@ $select = $crud->select('achats', 'id', 'ASC');
                 <a href="index.php" role="menuitem">Contact</a>
             </div>
             <div class="search-user">
-                <a href="#" class="search"><i class="fa fa-search"></i></a>
-                <a href="#" class="user"><i class="fa fa-user"></i></a>
+                <a href="order-index.php" class="search"><i class="fa fa-search"></i></a>
+                <a href="client-index.php" class="user"><i class="fa fa-user"></i></a>
             </div>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
@@ -64,9 +69,9 @@ $select = $crud->select('achats', 'id', 'ASC');
                     <tr>
                         <th>Achats</th>
                         <th>Date d'achat</th>
-                        <!-- <th>Tel</th>
-                <th>Code Postal</th>
-                <th>courriel</th> -->
+                        <th>Id voiture</th>
+                        <th>Id succursale</th>
+                        <!--  <th>courriel</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -76,6 +81,25 @@ $select = $crud->select('achats', 'id', 'ASC');
                         <tr>
                             <td><a href="order-show.php?id=<?= $row['id']; ?>"><?= $row['id'] ?></a></td>
                             <td><?= $row['date_achat'] ?></td>
+                            <td><?= $row['id_voiture'] ?>
+                                <?php
+                                foreach ($selectVoitures as $rowVoiture) {
+                                    if ($rowVoiture['id_voiture'] == $row['id_voiture']) {
+                                        echo $rowVoiture['modele'].$modele;
+                                    }
+                                }
+                                ?>
+                            </td>
+                            <td><?= $row['id_succursale'] ?>
+                                <?php
+                                foreach ($selectSuccursales as $rowSuccursale) {
+                                    if ($rowSuccursale['id_succursale'] == $row['id_succursale']) {
+                                        echo $rowSuccursale['nom'];
+                                    }
+
+                                }
+                                ?>
+                            </td>
                         </tr>
                     <?php
                     }
@@ -85,7 +109,7 @@ $select = $crud->select('achats', 'id', 'ASC');
             <p></p>
             <a href="order-create.php" class="bouton">Nouvelle commande</a>
             <a href="order-edit.php?id=<?= $row['id']; ?>" class="bouton">Modifier la dernière commande</a>
-            <!-- <a href="client-edit.php?id=<?= $row['id_client']; ?>" class="bouton">Modifier le dernier client</a> -->
+
 
         </main>
 

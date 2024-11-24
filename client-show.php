@@ -54,8 +54,8 @@ if ($selectId) {
                 <a href="index.php" role="menuitem">Contact</a>
             </div>
             <div class="search-user">
-                <a href="#" class="search"><i class="fa fa-search"></i></a>
-                <a href="#" class="user"><i class="fa fa-user"></i></a>
+                <a href="order-index.php" class="search"><i class="fa fa-search"></i></a>
+                <a href="client-index.php" class="user"><i class="fa fa-user"></i></a>
             </div>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
@@ -70,7 +70,7 @@ if ($selectId) {
     <div class="container">
 
         <main>
-            <h1>Dernièr client</h1>
+            <h1>Dernier client</h1>
             <p><strong>ID client : </strong><?= $id; ?></p>
             <p><strong>Nom: </strong><?= $nom; ?></p>
             <p><strong>Adresse: </strong><?= $adresse; ?></p>

@@ -27,7 +27,7 @@ print_r($post);
 
 $achat = [];
 foreach ($post as $key => $value) {
-    if ($key == "id_voiture" || $key == "id_client") {
+    if ($key == "id_voiture" || $key == "id_client" || $key == "id_succursale") {
         // echo "<br/>" . $key .":". $value;
         $achat[$key] = $value;
     }
