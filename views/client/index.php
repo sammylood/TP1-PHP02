@@ -4,41 +4,53 @@
         <span><a href="">Vehicules </a> > <a href=""> Tous les véhicules</a></span>
     </section>
 </header>
+
 <div class="container">
     <main>
-        <h1>Client</h1>
+        <h1>Réservations</h1>
         <table>
             <thead>
                 <tr>
-                    <th>ID Clients</th>
-                    <th>Nom</th>
-                    <th>Adresse</th>
-                    <th>Code Postal</th>
-                    <th>Tel</th>
-                    <th>courriel</th>
-                    <th>Suppr.</th>
+                    <th>N° de Réservation</th>
+                    <th>Date</th>
+                    <th>Id voiture</th>
+                    <th>Id succursale</th>
+                    <th>Id client</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                {% for client in clients %}
+                {% for achat in achats %}
                 <tr>
-                    <td><a href="{{ base }}/client/show?id={{client.id}}">{{client.id}}</a></td>
-                    <td>{{client.nom}}</td>
-                    <td>{{client.adresse}}</td>
-                    <td>{{client.code_postal}}</td>
-                    <td>{{client.tel}}</td>
-                    <td>{{client.courriel}}</td>
-                    <td>
-                        <form action="client-delete.php" method="post">
-                            <input type="hidden" name="id" value="{{client.id}}">
-                            <button type="submit" class="bouton">X</button>
-                        </form>
+                    <td><strong><a href="{{ base }}/client/show?id={{achat.id}}">{{achat.id}} Voir plus ></a></strong></td>
+                    <td>{{achat.date_achat}}</td>
+                    <td>{{ achat.id_voiture }}
+                        {% for modele in modeles %}
+                        {% if modele.id_voiture == achat.id_voiture %}
+                        {{ modele.modele }}
+                        {% endif %}
+                        {% endfor %}
                     </td>
+                    <td>{{ achat.id_succursale }}
+                        {% for succursale in succursales %}
+                        {% if succursale.id_succursale == achat.id_succursale %}
+                        {{ succursale.nom }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ achat.id_client }}
+                        {% for client in clients %}
+                        {% if client.id == achat.id_client %}
+                        {{ client.nom }}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td><a href="{{base}}/client/edit?id={{ achat.id }}" class="btn">Edit</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <a href="{{ base }}/client/create" class="bouton">New Client</a>
+        <a href="{{ base }}/client/create" class="bouton">Nouvelle commande</a>
     </main>
 </div>
 

@@ -40,21 +40,21 @@
         <div class="topnav container" id="myTopnav">
             <a href="#" class="logo" role="menuitem"><img src="https://www.mitsubishi-motors.ca/content/dam/mitsubishi-motors/images/logos/nav-logo-black.svg" alt="logo"></a>
             <div class="liens-nav">
-                <a href="index.php" role="menuitem">Accueil</a>
-                <a href="index.php" role="menuitem">À propos</a>
+                <a href="{{ base }}/client/catalogue" role="menuitem">Accueil</a>
+                <a href="{{ base }}/client/catalogue" role="menuitem">À propos</a>
                 <div class="dropdown">
                     <bouton class="dropbtn">Nos véhicules ▾</bouton>
                     <div class="dropdown-content">
-                        <a href="index.php" role="menuitem">Vehicules </a>
-                        <a href="index.php" role="menuitem">Offres spéciales</a>
-                        <a href="index.php" role="menuitem">Vehicules d'occasion</a>
+                        <a href="{{ base }}/client/catalogue" role="menuitem">Vehicules </a>
+                        <a href="{{ base }}/client/catalogue" role="menuitem">Offres spéciales</a>
+                        <a href="{{ base }}/client/catalogue" role="menuitem">Vehicules d'occasion</a>
                     </div>
                 </div>
-                <a href="index.php" role="menuitem">Contact</a>
+                <a href="{{ base }}/client/catalogue" role="menuitem">Contact</a>
             </div>
             <div class="search-user">
-                <a href="order-index.php" class="search"><i class="fa fa-search"></i></a>
-                <a href="client-index.php" class="user"><i class="fa fa-user"></i></a>
+                <a href="{{ base }}/clients" class="search"><i class="fa fa-search"></i></a>
+                <a href="{{ base }}/clients" class="user"><i class="fa fa-user"></i></a>
             </div>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
