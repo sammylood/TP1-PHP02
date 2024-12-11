@@ -38,7 +38,7 @@
 <body>
     <nav role="menubar">
         <div class="topnav container" id="myTopnav">
-            <a href="#" class="logo" role="menuitem"><img src="https://www.mitsubishi-motors.ca/content/dam/mitsubishi-motors/images/logos/nav-logo-black.svg" alt="logo"></a>
+            <a href="{{ base }}/client/catalogue" class="logo" role="menuitem"><img src="https://www.mitsubishi-motors.ca/content/dam/mitsubishi-motors/images/logos/nav-logo-black.svg" alt="logo"></a>
             <div class="liens-nav">
                 <a href="{{ base }}/client/catalogue" role="menuitem">Accueil</a>
                 <a href="{{ base }}/client/catalogue" role="menuitem">À propos</a>
